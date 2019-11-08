@@ -1,18 +1,55 @@
 Lab 4 - Data Structures Report                                                                          Brian Ricardo Perez
 
 INTRODUCTION :
-	Balance Search Trees, more specifically AVL and Red Black Trees, the two are different in their own way, AVL using rotations to balance the binary search tree. And Red-Black Trees using kind of the same thing but using colors as labels to make different “balancing” acts. In this project, we are required to gather all the words in the english language and put them into two different types of trees to the discretion of the user. Then use that data structure to search through and discover real anagrams of a list of words. 
+
+	For this lab it was very similar if not almost the exact same as Lab 3. Using all that we learned and had from Lab 3 
+	and implementing most of it to this version. We had the same constraints and ideas but instead we wanted to use a new 
+	tree which is to make use of the newly learned B-Trees. Which is from my discoveries is much faster and more 
+	effecient. 
+	
 PROPOSED SOLUTION DESIGN AND IMPLEMENTATION: 
-	My solution was very coordinated by the project constraints themselves, in addition to the fact that I also used code provided by zybooks and adapting it into the Python language for most of the construction of both AVL and RBTrees. When it came to implementing my own solutions it came in the form of creating a universal search method for both AVL and RB, (universal_Search(tree, node)) I only needed, value, left child, and right child traversal which of course both my RB and AVL tree nodes had. There was a lot of times I was breaking the code, there was this one instance in my insert for my RB tree where in line 60 and others like it I tried to insert a newly created node (= RBNode (cur.value)) with the current nodes value and see if it might work still. But as it should it created new node after new node, and did not “link” the nodes together in a tree. 
+
+	My solution was very coordinated by the project constraints themselves, in addition to the fact that I also used
+	code provided by zybooks and Prof. Deigo's code and then adapting it into the Python language for most of the 
+	construction of all three AVL, RBTrees, B-Trees. When it came to implementing my own solutions it came in the form 
+	of creating a universal search method for both AVL and RB, (universal_Search(tree, node)) I only needed, value, 
+	left child, and right child traversal which of course both my RB and AVL tree nodes had. Also using Diego's search 
+	method in his code, and altering it so instead of returning hte node it will return True or false, true being 
+	that it found the word in the tree There was a lot of times I was breaking the code, there was this one instance 
+	in my insert for my RB tree where in line 60 and others like it I tried to insert a newly created node 
+	(= RBNode (cur.value)) with the current nodes value and see if it might work still. But as it should it created 
+	new node after new node, and did not “link” the nodes together in a tree. 
+	
 EXPERIMENTAL RESULTS: 
+For the data of the experiments performance results: 
+**Wordz, is a smaller version of "words" created by me for quick testing
+**Words, being all the words in the english language, and that being used to fill each tree 
 
-	In the picture above you can see I created a list of words to test anagrams in the entire data structure of words in the english language. In this instance the output came out as it should counting all the anagrams and returning the amount found in the Tree. The running time of the AVL tree was  at least nlogn, being that it has to go through the entire tree, but also traverse the list size n, so n * log n. The AVL tree is very fast, the english language is obviously very large and it only took less than 10 seconds to fully finish the code doing multiple traversals through the entire tree. Because of the AVL tree’s strong constraints the balance in the end is very well done. 
+All the trees: 
+	https://drive.google.com/file/d/1C9o7jDg09_FPvztpI1SHckp2kK5vcKjF/view?usp=sharing
+All the max_num_keys: 
+	https://drive.google.com/file/d/1qGu4k-VXRKJUfa8JfE3ac-kXNDyVDvgU/view?usp=sharing
+	
+		Clearly what you will be able to see is that the B-Tree surpasses all the rest for the same reason as the AVL
+	tree was so ahead of the RBTree, The B-Tree itself is very much more of the type of tree to have stricter 
+	rules for balancing the tree, so to search so many times is nothing to that monster of a B-Tree. 
+		Also on the note of B-Trees, I also tested a bunch of different max_num_keys and it seemed as every time 
+	I increased the amount of this one variable it changed the time significantly, but I realized well with so many 
+	words let me just go ahead and make it 100, and then it ended up being around the same time as the 3 variable. So
+	there is a sweet spot of the max_num_keys for each n amount of values to make it the most effecient. Through my tests 
+	I made the general guess that 20 was that spot so I just used that for all my other tree tests. 
 
-
-
-This is the Red-Black Tree,  it was much slower to my actual surprise, until I realized that even with all the labeling with red and black, its main use is speed in insertion, and we really only have to insert all the words once, and that’s where this tree lacks comparatively to the AVL. It has strict balancing rules, but nowhere near to the AVL’s. The running time of this version of the code is n^2 log n.  Also Side note, tiny glitch in my code, when it finishes it has this massive space that is created but I’m not sure where it comes from. (as shown on the right)
 CONCLUSIONS: 
-All in all, this was a very challenging lab, but a kind of fun one towards the end. What I learned was that AVL trees provide faster searches than Red Black Trees because they are more strictly balanced overall.Granted what makes Red Black Trees great is that they provide faster insertion and removal operations than AVL trees as fewer rotations are done due to relatively relaxed balancing. So in a situation where I would have to be inserted on the ratio that I was searching in this lab then of course the Red Black Tree would be quicker. Although in our case which is the case that matters, the AVL tree is very much quicker due to this lab tackling its strong suit. 
+	All in all, this was a very different and interesting . What I learned was that AVL trees 
+provide faster searches than Red Black Trees because they are more strictly balanced overall.Granted what makes Red Black 
+Trees great is that they provide faster insertion and removal operations than AVL trees as fewer rotations are done due to 
+relatively relaxed balancing. So in a situation where I would have to be inserted on the ratio that I was searching in this 
+lab then of course the Red Black Tree would be quicker. Although in our case which is the case that matters, the AVL tree is 
+very much quicker due to this lab tackling its strong suit. 
+
+
+
+Appendix: 
 
 """
 Created on Wednesday October  9 12:40:04 2019
